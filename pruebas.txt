@@ -1,0 +1,21 @@
+PASS temp 19.9 => low
+PASS temp 20 => normal
+PASS temp 35 => normal
+PASS temp 35.1 => high
+PASS humidity 39.9 => low
+PASS humidity 40 => normal
+PASS humidity 80 => normal
+PASS humidity 80.1 => high
+PASS ph 5.4 => low
+PASS ph 5.5 => normal
+PASS ph 6.5 => normal
+PASS ph 6.6 => high
+PASS pH inválido NaN
+PASS pH inválido Infinity
+PASS pH inválido -1
+PASS pH inválido 15
+PASS Rechaza cadena numérica
+PASS Reporte español incluye pH
+PASS Reporte inglés completo
+PASS Lectura inválida no produce reporte
+20 pruebas completadas.

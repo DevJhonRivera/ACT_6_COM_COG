@@ -1,0 +1,1 @@
+Abra index.html en Chrome o Edge. No requiere servidor. La voz depende de las voces instaladas. Todos los datos son simulados. Para ejecutar las pruebas, con Node.js instalado: node tests.cjs. La publicación y las capturas del informe siguen pendientes.

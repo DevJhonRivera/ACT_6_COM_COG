@@ -1,0 +1,8 @@
+/* Extensión del proyecto de la guía. Umbrales didácticos, no prescripción agronómica. */
+(function(root){
+const ranges={temp:[20,35],humidity:[40,80],ph:[5.5,6.5]};
+function classify(value,key){const [min,max]=ranges[key];return value<min?'low':value>max?'high':'normal';}
+function validate(d){return ['temp','humidity','ph'].every(k=>typeof d[k]==='number'&&Number.isFinite(d[k]))&&d.temp>=-20&&d.temp<=60&&d.humidity>=0&&d.humidity<=100&&d.ph>=0&&d.ph<=14;}
+function report(d,lang='es'){if(!validate(d))throw Error('Lectura inválida');const en=lang==='en';const status={low:en?'below range':'por debajo del intervalo',normal:en?'within range':'dentro del intervalo',high:en?'above range':'por encima del intervalo'};const f=n=>n.toLocaleString(en?'en-US':'es-CO',{maximumFractionDigits:1});return en?`Simulated greenhouse report. Temperature: ${f(d.temp)} degrees Celsius, ${status[classify(d.temp,'temp')]}. Humidity: ${f(d.humidity)} percent, ${status[classify(d.humidity,'humidity')]}. Soil pH: ${f(d.ph)}, ${status[classify(d.ph,'ph')]}. These are teaching thresholds; verify readings and crop requirements before acting.`:`Reporte simulado del invernadero. Temperatura: ${f(d.temp)} grados Celsius, ${status[classify(d.temp,'temp')]}. Humedad: ${f(d.humidity)} por ciento, ${status[classify(d.humidity,'humidity')]}. pH del suelo: ${f(d.ph)}, ${status[classify(d.ph,'ph')]}. Los umbrales son didácticos; verifique las lecturas y las necesidades del cultivo antes de actuar.`;}
+root.Greenhouse={ranges,classify,validate,report};if(typeof module!=='undefined')module.exports=root.Greenhouse;
+})(typeof globalThis!=='undefined'?globalThis:window);
